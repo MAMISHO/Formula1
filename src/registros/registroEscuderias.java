@@ -6,8 +6,13 @@ package registros;
 import entidades.Escuderia;
 import entidades.Piloto;
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author MAMISHO
@@ -74,7 +79,7 @@ public class registroEscuderias {
         grabar+=esc.getMotor()+";";
         grabar+=esc.getNeumaticos()+";";
         grabar+=esc.getPrimeraTemporada()+";";
-        grabar+=esc.getFechaCrea().toString()+";";
+        grabar+=esc.getFechaCrea().toString();
         
         this.escribir(grabar);
     }
@@ -111,6 +116,76 @@ public class registroEscuderias {
     
     public void borraEscuderia(Escuderia esc){
         
+    }
+    
+    public List<Escuderia> cargarEscuderias(){
+        List<Escuderia> esc=new ArrayList<Escuderia>();
+        List<String> lineas=new ArrayList<String>();
+        try {
+       
+           archivo = new File (this.ruta+"R_Escuderia.txt");
+           fr = new FileReader (archivo);
+           br = new BufferedReader(fr);
+           
+         // Lectura del fichero
+           String linea;
+           while((linea=br.readLine())!=null)
+               lineas.add(linea);
+            //System.out.println(linea);
+    }
+    catch(Exception e){
+       e.printStackTrace();
+    }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+       try{                    
+            if( null != fr ){   
+                fr.close();     
+            }                  
+        }catch (Exception e2){ 
+            e2.printStackTrace();
+        }
+    }
+        //si hay ñectura de lineas añadimos a la lista de escuderias
+        if(!lineas.isEmpty()){
+            for(String a:lineas){
+                String[] atr;
+                Escuderia escuderia=new Escuderia();
+                atr=a.split(";");
+                escuderia.setIdEscuderia(atr[0]);
+                
+                String[] pActivos=atr[1].split(":");
+                List<String> pilotosActivos=new ArrayList<String>();
+                pilotosActivos.add(pActivos[0]);
+                pilotosActivos.add(pActivos[1]);
+                
+                escuderia.setIdPilotosActivos(pilotosActivos);
+                escuderia.setNombre(atr[2]);
+                escuderia.setSede(atr[3]);
+                escuderia.setChasis(atr[4]);
+                escuderia.setMotor(atr[5]);
+                escuderia.setNeumaticos(atr[6]);
+                escuderia.setPrimeraTemporada(atr[7]);
+                
+                //la fecha la convertimos
+                /*SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+                String dateInString = atr[8];
+                Date date = null;
+                try {
+                    date = formatter.parse(dateInString);
+                } catch (ParseException ex) {
+                    Logger.getLogger(registroEscuderias.class.getName()).log(Level.SEVERE, null, ex);
+                }*/
+                escuderia.setFechaCrea(atr[8]);
+                
+                esc.add(escuderia);
+            }
+        }else{
+            System.out.println("No existen escuderias");
+        }
+        
+        return esc;
     }
 
     public List<Escuderia> getListaEscuderias() {

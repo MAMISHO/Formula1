@@ -21,13 +21,13 @@ public class Escuderia {
     private String motor;
     private String neumaticos;
     private String primeraTemporada;
-    private Date fechaCrea;
+    private String fechaCrea;
 
     public Escuderia(){
         this.pilotos=new ArrayList<Piloto>();
         this.idPilotosActivos=new ArrayList<String>();
     }
-    public void introducirDatos(String idEscuderia,/*List<Piloto> pilotos,*/ List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, Date fechaCrea){
+    public void introducirDatos(String idEscuderia,/*List<Piloto> pilotos,*/ List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, String fechaCrea){
     	this.idEscuderia=idEscuderia;
     	//this.pilotos=pilotos;
     	this.idPilotosActivos=idPilotosActivos;
@@ -40,7 +40,7 @@ public class Escuderia {
         this.fechaCrea=fechaCrea;
     }
 
-    public void modificarDatos(String nombre,String sede, String chasis,String motor, String neumaticos, String primeraTemporada,Date fechaCrea){
+    public void modificarDatos(String nombre,String sede, String chasis,String motor, String neumaticos, String primeraTemporada,String fechaCrea){
         this.nombre=nombre;
         this.sede=sede;
         this.chasis=chasis;
@@ -56,20 +56,20 @@ public class Escuderia {
 
     public String toString(Escuderia esc){
         String datosEscuderia;
-        String pilotosDesc="";
+        /*String pilotosDesc="";
         String pilotoA1=esc.idPilotosActivos.get(0);
         String pilotoA2=esc.idPilotosActivos.get(1);
       
         for(Piloto piloto:esc.pilotos){
             String activo="NO";
-            if(pilotoA1.equals(piloto.idPiloto)){
+            if(pilotoA1.equals(piloto.idPiloto) || pilotoA2.equals(piloto.idPiloto)){
                 activo="SI";
             }
             pilotosDesc=pilotosDesc + "Activo : "+ activo + "\n" + piloto.imprimirPiloto();
             
-        }
+        }*/
         
-        datosEscuderia="Escuderia\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\n1 Temporada: "+esc.primeraTemporada+"\n Fecha de creacion: "+  esc.fechaCrea.toString()+"\n";
+        datosEscuderia="ID: "+esc.idEscuderia+"\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\n1 Temporada: "+esc.primeraTemporada+"\n Fecha de creacion: "+  esc.fechaCrea+"\n";
         return datosEscuderia;
     }
 
@@ -147,11 +147,11 @@ public class Escuderia {
         this.primeraTemporada = primeraTemporada;
     }
 
-    public Date getFechaCrea() {
+    public String getFechaCrea() {
         return fechaCrea;
     }
 
-    public void setFechaCrea(Date fechaCrea) {
+    public void setFechaCrea(String fechaCrea) {
         this.fechaCrea = fechaCrea;
     }
     
