@@ -4,23 +4,29 @@
  */
 package registros;
 import entidades.Escuderia;
+import entidades.Piloto;
 import java.io.*;
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author MAMISHO
  */
 public class registroEscuderias {
+    List<Escuderia> listaEscuderias;
     String ruta;
     File archivo;
     FileReader fr;
     BufferedReader br;
     
     public registroEscuderias(){
+        listaEscuderias=new ArrayList<Escuderia>();
         ruta="src/registros/";
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
     }
+    
     public void LeeFichero() {
         try {
          // Apertura del fichero y creacion de BufferedReader para poder
@@ -51,7 +57,26 @@ public class registroEscuderias {
   }
     
     public void guardarEscuderia(Escuderia esc){
+        String grabar="";
+        String pilotos="PIL1:PIL2:PIL3:PIL4:";
+        /*for(Piloto piloto:esc.getPilotos()){
+            pilotos+=piloto.getIdPiloto()+":";
+        }*/
+        pilotos=pilotos.substring(0, pilotos.length()-1);
         
+        grabar+=esc.getIdEscuderia()+";";
+        grabar+=pilotos+";";
+        grabar+=esc.getIdPilotosActivos().get(0)+":";
+        grabar+=esc.getIdPilotosActivos().get(1)+";";
+        grabar+=esc.getNombre()+";";
+        grabar+=esc.getSede()+";";
+        grabar+=esc.getChasis()+";";
+        grabar+=esc.getMotor()+";";
+        grabar+=esc.getNeumaticos()+";";
+        grabar+=esc.getPrimeraTemporada()+";";
+        grabar+=esc.getFechaCrea().toString()+";";
+        
+        this.escribir(grabar);
     }
     
     public void escribir(String cadena){
@@ -77,6 +102,23 @@ public class registroEscuderias {
               e2.printStackTrace();
            }
         }
+    }
+    
+    public Escuderia introduceIdEscuderia(String id){
+        Escuderia esc=new Escuderia();
+        return esc;
+    }
+    
+    public void borraEscuderia(Escuderia esc){
+        
+    }
+
+    public List<Escuderia> getListaEscuderias() {
+        return listaEscuderias;
+    }
+
+    public void setListaEscuderias(List<Escuderia> listaEscuderias) {
+        this.listaEscuderias = listaEscuderias;
     }
 }
 

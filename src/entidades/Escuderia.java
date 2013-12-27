@@ -27,9 +27,9 @@ public class Escuderia {
         this.pilotos=new ArrayList<Piloto>();
         this.idPilotosActivos=new ArrayList<String>();
     }
-    public void introducirDatos(String idEscuderia,List<Piloto> pilotos, List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, Date fechaCrea){
+    public void introducirDatos(String idEscuderia,/*List<Piloto> pilotos,*/ List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, Date fechaCrea){
     	this.idEscuderia=idEscuderia;
-    	this.pilotos=pilotos;
+    	//this.pilotos=pilotos;
     	this.idPilotosActivos=idPilotosActivos;
         this.nombre=nombre;
         this.sede=sede;
