@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author MAMISHO
  */
 public class Escuderia {
-    private String idEscuderia;
+    //private String idEscuderia; //el nombre es el id
     private List<Piloto> pilotos;
     private List<String> idPilotosActivos;
     private String nombre;
@@ -27,8 +27,8 @@ public class Escuderia {
         this.pilotos=new ArrayList<Piloto>();
         this.idPilotosActivos=new ArrayList<String>();
     }
-    public void introducirDatos(String idEscuderia,/*List<Piloto> pilotos,*/ List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, String fechaCrea){
-    	this.idEscuderia=idEscuderia;
+    public void introducirDatos(/*String idEscuderia,*/List<Piloto> pilotos, List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, String fechaCrea){
+    	//this.idEscuderia=idEscuderia;
     	//this.pilotos=pilotos;
     	this.idPilotosActivos=idPilotosActivos;
         this.nombre=nombre;
@@ -69,20 +69,11 @@ public class Escuderia {
             
         }*/
         
-        datosEscuderia="ID: "+esc.idEscuderia+"\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\n1 Temporada: "+esc.primeraTemporada+"\n Fecha de creacion: "+  esc.fechaCrea+"\n";
+        datosEscuderia="* Escuderia *\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\n1 Temporada: "+esc.primeraTemporada+"\nFecha de creacion: "+  esc.fechaCrea+"\n";
         return datosEscuderia;
     }
 
     //añade código por netbeans
-
-    public String getIdEscuderia() {
-        return idEscuderia;
-    }
-
-    public void setIdEscuderia(String idEscuderia) {
-        this.idEscuderia = idEscuderia;
-    }
-
     public List<Piloto> getPilotos() {
         return pilotos;
     }

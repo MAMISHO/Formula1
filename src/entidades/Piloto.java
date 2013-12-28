@@ -23,6 +23,10 @@ public class Piloto {
     
     }
     
+    public Piloto(String idPiloto){
+        this.idPiloto=idPiloto;
+    }
+    
     public void introducirDatos(){
         
     }

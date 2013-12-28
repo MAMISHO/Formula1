@@ -17,14 +17,14 @@ import java.util.logging.Logger;
  *
  * @author MAMISHO
  */
-public class registroEscuderias {
+public class RegistroEscuderias {
     List<Escuderia> listaEscuderias;
     String ruta;
     File archivo;
     FileReader fr;
     BufferedReader br;
     
-    public registroEscuderias(){
+    public RegistroEscuderias(){
         listaEscuderias=new ArrayList<Escuderia>();
         ruta="src/registros/";
         File archivo = null;
@@ -69,11 +69,10 @@ public class registroEscuderias {
         }*/
         pilotos=pilotos.substring(0, pilotos.length()-1);
         
-        grabar+=esc.getIdEscuderia()+";";
+        grabar+=esc.getNombre()+";";
         grabar+=pilotos+";";
         grabar+=esc.getIdPilotosActivos().get(0)+":";
         grabar+=esc.getIdPilotosActivos().get(1)+";";
-        grabar+=esc.getNombre()+";";
         grabar+=esc.getSede()+";";
         grabar+=esc.getChasis()+";";
         grabar+=esc.getMotor()+";";
@@ -118,7 +117,7 @@ public class registroEscuderias {
         
     }
     
-    public List<Escuderia> cargarEscuderias(){
+    public void cargarEscuderias(){
         List<Escuderia> esc=new ArrayList<Escuderia>();
         List<String> lineas=new ArrayList<String>();
         try {
@@ -153,15 +152,18 @@ public class registroEscuderias {
                 String[] atr;
                 Escuderia escuderia=new Escuderia();
                 atr=a.split(";");
-                escuderia.setIdEscuderia(atr[0]);
+                escuderia.setNombre(atr[0]);
                 
-                String[] pActivos=atr[1].split(":");
+                //atr[1] son los pilotos, pero no los construyo
+                //hasta que lo implementen
+                
+                String[] pActivos=atr[2].split(":");
                 List<String> pilotosActivos=new ArrayList<String>();
                 pilotosActivos.add(pActivos[0]);
                 pilotosActivos.add(pActivos[1]);
                 
                 escuderia.setIdPilotosActivos(pilotosActivos);
-                escuderia.setNombre(atr[2]);
+                
                 escuderia.setSede(atr[3]);
                 escuderia.setChasis(atr[4]);
                 escuderia.setMotor(atr[5]);
@@ -175,9 +177,9 @@ public class registroEscuderias {
                 try {
                     date = formatter.parse(dateInString);
                 } catch (ParseException ex) {
-                    Logger.getLogger(registroEscuderias.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegistroEscuderias.class.getName()).log(Level.SEVERE, null, ex);
                 }*/
-                escuderia.setFechaCrea(atr[8]);
+                escuderia.setFechaCrea(atr[7]);
                 
                 esc.add(escuderia);
             }
@@ -185,7 +187,8 @@ public class registroEscuderias {
             System.out.println("No existen escuderias");
         }
         
-        return esc;
+        //return esc;
+        this.listaEscuderias=esc;
     }
 
     public List<Escuderia> getListaEscuderias() {
