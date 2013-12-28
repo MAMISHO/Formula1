@@ -29,7 +29,7 @@ public class Escuderia {
     }
     public void introducirDatos(/*String idEscuderia,*/List<Piloto> pilotos, List<String>idPilotosActivos,String nombre, String sede,String chasis, String motor,String neumaticos,String primeraTemporada, String fechaCrea){
     	//this.idEscuderia=idEscuderia;
-    	//this.pilotos=pilotos;
+    	this.pilotos=pilotos;
     	this.idPilotosActivos=idPilotosActivos;
         this.nombre=nombre;
         this.sede=sede;
