@@ -140,8 +140,13 @@ public class Formula1 {
     //metodos de consultas campeonato mundial
     
     public void consultaCECM(){
-        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesEscuderia(this.campeonatoMundial.getAnyo());
-        this.posicion.
+        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
+        this.posicion.mostrarClasificacionEscuderiasCM(posiciones);
+    }
+    
+    public void consultaCPCM(){
+        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
+        this.posicion.mostrarClasificacionPilotosCM(posiciones);
     }
     //metodos necesarios
     

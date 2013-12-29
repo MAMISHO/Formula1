@@ -27,6 +27,14 @@ public class Piloto {
         this.idPiloto=idPiloto;
     }
     
+    /*Contructor de pruebas, no aparece en la implementacion
+     * final, solo es para ver la consyltas, eliminar despues de
+     * las pruebas
+     */
+    public Piloto(String idPiloto,String equipo){
+        this.idPiloto=idPiloto;
+        this.equipo=equipo;
+    }
     public void introducirDatos(){
         
     }
