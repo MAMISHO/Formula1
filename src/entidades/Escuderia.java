@@ -40,8 +40,8 @@ public class Escuderia {
         this.fechaCrea=fechaCrea;
     }
 
-    public void modificarDatos(String nombre,String sede, String chasis,String motor, String neumaticos, String primeraTemporada,String fechaCrea){
-        this.nombre=nombre;
+    public void modificarDatos(/*String nombre,*/String sede, String chasis,String motor, String neumaticos, String primeraTemporada,String fechaCrea){
+        //this.nombre=nombre;
         this.sede=sede;
         this.chasis=chasis;
         this.motor=motor;
@@ -54,7 +54,7 @@ public class Escuderia {
         System.out.println(this.toString(esc));
     }
 
-    public String toString(Escuderia esc){
+    private String toString(Escuderia esc){
         String datosEscuderia;
         /*String pilotosDesc="";
         String pilotoA1=esc.idPilotosActivos.get(0);
@@ -69,7 +69,7 @@ public class Escuderia {
             
         }*/
         
-        datosEscuderia="* Escuderia *\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\n1 Temporada: "+esc.primeraTemporada+"\nFecha de creacion: "+  esc.fechaCrea+"\n";
+        datosEscuderia="* Escuderia *\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\nPrimera Temporada: "+esc.primeraTemporada+"\nFecha de creacion: "+  esc.fechaCrea+"\n";
         return datosEscuderia;
     }
 

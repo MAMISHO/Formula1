@@ -49,15 +49,30 @@ public class Formula1 {
     public void realizarAltaEscuderia(){
         this.escuderia=new Escuderia();
     }
-    public void realizarBajaEscuderia(){
+    
+    /*Nota de la implementación
+     @overwrite
+     * Si implementaramos los escenarios alternativos
+     * tendriamos que comprobar si el id existe en la
+     * lista, como solo nos centramos en el caso normal
+     * no comprobamos y solicitamos la escuderia
+     */
+    public void realizarBajaEscuderia(String idEscuderia){
+        this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
+        this.registroDatosEscuderias.borraEscuderia(escuderia);
+    }
+    
+    public void realizarConsultaEscuderia(String idEscuderia){
+        this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
+        this.escuderia.mostrarDatos(escuderia);
+    }
+    
+    public void realizarModificarEscuderia(String idEscuderia){
+        this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
+        this.escuderia.mostrarDatos(escuderia);
         
     }
-    public void realizarConsultaEscuderia(){
-        
-    }
-    public void realizarModificarEscuderia(){
-        
-    }
+    
     public void introducirDatosEscuderia(String[] pilotos,String[] pilotosActivos,String nombre,String sede,String chasis,String motor,String neumaticos,String primeraTemporada,String fechaCrea){
         //construimos los datos de La escuderia y se la enviamos
         List<Piloto> listaPilotos=new ArrayList<Piloto>();
@@ -79,6 +94,11 @@ public class Formula1 {
         
         //guarda la escuderia
         registroDatosEscuderias.guardarEscuderia(this.escuderia);
+    }
+    
+    public void modificarDatosEscuderia(/*String nombre,*/String sede,String chasis,String motor,String neumaticos,String primeraTemporada,String fechaCrea){
+        this.escuderia.modificarDatos(/*nombre,*/sede, chasis, motor, neumaticos, primeraTemporada, fechaCrea);
+        this.registroDatosEscuderias.guardarEscuderiaModificada(escuderia);
     }
    
     

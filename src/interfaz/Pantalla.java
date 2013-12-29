@@ -71,15 +71,21 @@ public class Pantalla {
             case 1:
                 this.f1.realizarAltaEscuderia();
                 this.introducirDatosEscuderia();
+                System.out.println("\nEscuderia guardada correctamente");
                 break;
             case 2:
-                this.f1.realizarBajaEscuderia();
+                System.out.println("\n** Baja de Escuderia **\n");
+                this.f1.realizarBajaEscuderia(this.solicitarId());
+                System.out.println("La escuderia se elimino de forma correcta\n");
                 break;
             case 3:
-                this.f1.realizarModificarEscuderia();
+                System.out.println("\n** Modificar Escuderia **\n");
+                this.f1.realizarModificarEscuderia(this.solicitarId());
+                this.ModificarDatosEscuderia();
+                
                 break;
             case 4:
-                this.f1.realizarConsultaEscuderia();
+                this.f1.realizarConsultaEscuderia(this.solicitarId());
                 break;
             case 5:
                 salir=true;
@@ -150,6 +156,67 @@ public class Pantalla {
         this.f1.introducirDatosEscuderia(idPilotos, idPilotosActivos, nombre, sede, chasis, motor, neumaticos, primeraTemporada, fechaCrea);
     }
     
+    public void ModificarDatosEscuderia(){
+        //String nombre;
+        //String[] idPilotos=new String[4];
+        //int numPilotos=0;
+        //String[] idPilotosActivos;
+        String sede;
+        String chasis;
+        String motor;
+        String neumaticos;
+        String primeraTemporada;
+        String fechaCrea;
+        //Boolean completo=false;
+        //Boolean otromas=false;
+        //int contador=0;
+        //int opcion=1;
+        
+        System.out.println("**Introduzca nuevos datos de la Escudería**");
+        //System.out.println("\nNombre: ");
+        //nombre=IO.readLine();
+        System.out.println("\nSede: ");
+        sede=IO.readLine();
+        System.out.println("\nChasis: ");
+        chasis=IO.readLine();
+        System.out.println("\nMotor: ");
+        motor=IO.readLine();
+        System.out.println("\nNeumaticos: ");
+        neumaticos=IO.readLine();
+        System.out.println("\nPrimera Temporada: ");
+        primeraTemporada=IO.readLine();
+        System.out.println("\nFecha Creación(dd-mm-yyy): ");
+        fechaCrea=IO.readLine();
+        
+        /*System.out.println("\n**** Pilotos de la escudería ****");
+        while(contador<4 && !otromas){
+            System.out.println("\nID del piloto");
+            String aux=IO.readLine();
+            idPilotos[contador]=aux;
+            numPilotos++;
+            if(contador>0){//hacer pruebas de index
+                do{
+                    if(contador<3){
+                    System.out.println("\nIngresar otro?\n\t[1=si | 2=no]");
+                    opcion=(int)IO.readNumber();
+                    }else{
+                        opcion=2;
+                    }
+                    
+                }while(opcion<1 || opcion >2);
+                
+                if(opcion==2){
+                    otromas=true;
+                }
+            }
+            contador++;
+        }*/
+        
+        //idPilotosActivos=this.seleccionaPilotosActivos(idPilotos,numPilotos);
+        
+        
+        this.f1.modificarDatosEscuderia(/*nombre,*/ sede, chasis, motor, neumaticos, primeraTemporada, fechaCrea);
+    }
     
     private String[] seleccionaPilotosActivos(String[] p,int numPilotos){
         String[] pA=new String[2];
@@ -182,5 +249,13 @@ public class Pantalla {
         }while(contador<2);
         
         return pA;
+    }
+    
+    public String solicitarId(){
+        String idEscuderia;
+        System.out.println("Introduce el id de la escuderia\n");
+        idEscuderia=IO.readLine();
+        //this.f1.realizarBajaEscuderia(idEscuderia);
+        return idEscuderia;
     }
 }

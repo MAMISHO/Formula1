@@ -32,7 +32,7 @@ public class RegistroEscuderias {
         BufferedReader br = null;
     }
     
-    public void LeeFichero() {
+    private void LeeFichero() {
         try {
          // Apertura del fichero y creacion de BufferedReader para poder
          // hacer una lectura comoda (disponer del metodo readLine()).
@@ -78,12 +78,16 @@ public class RegistroEscuderias {
         grabar+=esc.getMotor()+";";
         grabar+=esc.getNeumaticos()+";";
         grabar+=esc.getPrimeraTemporada()+";";
-        grabar+=esc.getFechaCrea().toString();
+        grabar+=esc.getFechaCrea();
         
         this.escribir(grabar);
     }
     
-    public void escribir(String cadena){
+    public void guardarEscuderiaModificada(Escuderia esc){
+       this.modificarEscuderiaLista(esc);
+    }
+    
+    private void escribir(String cadena){
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
@@ -108,13 +112,18 @@ public class RegistroEscuderias {
         }
     }
     
-    public Escuderia introduceIdEscuderia(String id){
-        Escuderia esc=new Escuderia();
+    public Escuderia introduceIdEscuderia(String idescuderia){
+        Escuderia esc=null;
+        for(Escuderia e:this.getListaEscuderias()){
+            if(e.getNombre().equals(idescuderia)){
+                esc=e;
+            }
+        }
         return esc;
     }
     
     public void borraEscuderia(Escuderia esc){
-        
+        this.eliminarEscuderiaLista(esc);
     }
     
     public void cargarEscuderias(){
@@ -198,5 +207,58 @@ public class RegistroEscuderias {
     public void setListaEscuderias(List<Escuderia> listaEscuderias) {
         this.listaEscuderias = listaEscuderias;
     }
+    
+    private void eliminarEscuderiaLista(Escuderia esc){
+        List<Escuderia> l=this.getListaEscuderias();
+        for(Escuderia e:l){
+            if(esc.getNombre().equals(e.getNombre())){
+                this.listaEscuderias.remove(e);
+                break;
+            }
+        }
+        this.actualizarFichero();
+    }
+    
+    private void modificarEscuderiaLista(Escuderia esc){
+        List<Escuderia> l=this.getListaEscuderias();
+        int i=0;
+        for(Escuderia e:l){
+            if(esc.getNombre().equals(e.getNombre())){
+                //this.listaEscuderias.remove(e);
+                this.listaEscuderias.set(i, esc);
+                break;
+            }
+            i++;
+        }
+        this.actualizarFichero();
+    }
+    
+    private void actualizarFichero(){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter(this.ruta+"R_Escuderia.txt");
+            pw = new PrintWriter(fichero);
+ 
+            for(Escuderia e:this.getListaEscuderias()){
+                this.guardarEscuderia(e);
+            }
+                //pw.println(cadena);
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+            
 }
 

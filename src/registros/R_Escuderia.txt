@@ -1,6 +1,3 @@
-Escuderia 1;PIL1:PIL2:PIL3:PIL4;PIL1:PIL3;Sede 1;Chasis 1;Motor 1;Neumatico 1;1990;07-07-2013
-Ferrari;PIL1:PIL2:PIL3:PIL4;PIL-1:PIL-2;Reino Unido;Ferrari Chasis;Ferrari motor;Michelin;1995;19-10-1990
-Red Bull Racing;PIL1:PIL2:PIL3:PIL4;PIL-5:PIL-7;Milton Keynes, Reino Unido;RB10;Renault;Pirelli;2005;01-01-2005
-Vodafone McLaren Mrecedes;PIL1:PIL2:PIL3:PIL4;PIL-9:PIL-10;Woking, Surrey, Reino Unido;McLaren MP4-29;Mercedes-Benz V6;Pirelli;1966;01-01-1966
-Escuderis1;PIL1:PIL2:PIL3:PIL4;PIL-12:PIL-15;Sede2;chasis2;motor2;neurmaticos2;1992;01-01-1992
-Escuderia3;PIL1:PIL2:PIL3:PIL4;PIL-16:PIL-17;Sede3;Chasis3;motor3;neumaticos3;1993;01-01-1993
+Red Bull Racing;PIL1:PIL2:PIL3:PIL4;PIL-5:PIL-7;Milton Keynes, Reino Unido;RB10;Renault;Pirelli;2005;2005
+Vodafone McLaren Mrecedes;PIL1:PIL2:PIL3:PIL4;PIL-9:PIL-10;Woking, Surrey, Reino Unido;McLaren MP4-29;Mercedes-Benz V6;Pirelli;1966;1966
+Ferrari;PIL1:PIL2:PIL3:PIL4;PIL-1:PIL-2;Maranello, Italia;Ferrari F138;Ferrari 056;Pirelli;1950;01-01-1950
