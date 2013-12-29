@@ -28,6 +28,7 @@ public class Pantalla {
         System.out.println("2) Gestión Escuderias\n");
         System.out.println("3) Gestión Circuitos\n");
         System.out.println("4) Gestión Salir\n");
+        //ampliar los demas casos de uso en el menu
         System.out.println("\n_____Selecciona una opción_____\n");
         op=(int)IO.readNumber();
         }

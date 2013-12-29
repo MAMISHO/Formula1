@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import entidades.CampeonatoMundial;
 import entidades.Circuito;
 import entidades.Escuderia;
 import entidades.Piloto;
@@ -16,6 +17,8 @@ import registros.RegistroEscuderias;
  * @author MAMISHO
  */
 public class Formula1 {
+    //Campeonato mundial
+    CampeonatoMundial campeonatoMundial;
     //Registros
     RegistroEscuderias registroDatosEscuderias;
     //RegistroPilotos registroDatosPilotos;
@@ -29,6 +32,13 @@ public class Formula1 {
         //creamos los registros y la carga de datos se hace
         //en el main
         registroDatosEscuderias=new RegistroEscuderias();
+        
+        
+        //this.inicalizaCM();
+    }
+    
+    public void inicializaCM(){
+        //this.campeonatoMundial=new CampeonatoMundial("2014");
     }
     
     //piloto
@@ -121,4 +131,15 @@ public class Formula1 {
     public void cargarDatosEscuderias(){
         this.registroDatosEscuderias.cargarEscuderias();
     }
+    
+    //metodos necesarios
+    
+    public void addCM(CampeonatoMundial cm){
+        this.campeonatoMundial=cm;
+    }
+    
+    public CampeonatoMundial getCampeonatoMundial(){
+        return this.campeonatoMundial;
+    }
+    
 }
