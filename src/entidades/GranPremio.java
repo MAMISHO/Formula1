@@ -11,5 +11,19 @@ package entidades;
  * @author zadik
  */
 public class GranPremio {
+    String nombre;
+    String pais;
+    String dia;
+    String mes;
+    String anyo;
+    Posicion posicion;
+    
+    public GranPremio(){
+        
+    }
+    
+    public Posicion nuevaPosicion(){
+        return this.posicion=new Posicion(this.anyo,this.nombre);
+    }
     
 }

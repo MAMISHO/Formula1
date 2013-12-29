@@ -8,8 +8,10 @@ import entidades.CampeonatoMundial;
 import entidades.Circuito;
 import entidades.Escuderia;
 import entidades.Piloto;
+import entidades.Posicion;
 import java.util.ArrayList;
 import java.util.List;
+import registros.RegistroClasificaciones;
 import registros.RegistroEscuderias;
 
 /**
@@ -20,6 +22,7 @@ public class Formula1 {
     //Campeonato mundial
     CampeonatoMundial campeonatoMundial;
     //Registros
+    RegistroClasificaciones registroClasificaciones;
     RegistroEscuderias registroDatosEscuderias;
     //RegistroPilotos registroDatosPilotos;
     //RegistroCircuitos registroDatosCircuitos;
@@ -27,10 +30,12 @@ public class Formula1 {
     //entidades
     Escuderia escuderia;
     Piloto piloto;
+    Posicion posicion;
     
     public Formula1(){
         //creamos los registros y la carga de datos se hace
         //en el main
+        registroClasificaciones=new RegistroClasificaciones();
         registroDatosEscuderias=new RegistroEscuderias();
         
         
@@ -132,9 +137,15 @@ public class Formula1 {
         this.registroDatosEscuderias.cargarEscuderias();
     }
     
+    //metodos de consultas campeonato mundial
+    
+    public void consultaCECM(){
+        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesEscuderia(this.campeonatoMundial.getAnyo());
+        this.posicion.
+    }
     //metodos necesarios
     
-    public void addCM(CampeonatoMundial cm){
+    public void setCampeonatoMundial(CampeonatoMundial cm){
         this.campeonatoMundial=cm;
     }
     

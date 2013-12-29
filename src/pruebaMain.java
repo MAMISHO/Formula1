@@ -1,5 +1,6 @@
 
 import controlador.Formula1;
+import entidades.CampeonatoMundial;
 import registros.RegistroEscuderias;
 import java.util.List;
 import java.util.ArrayList;
@@ -77,7 +78,15 @@ public class pruebaMain {
         
         Formula1 f1=new Formula1(); //creo el controlador
         
+        
+        
+        
+        
+        
         f1.cargarDatosEscuderias();//cargamos los datos de los ficheros
+        //f1.cargarDatosPilotos();
+        //f1.cargarDatosCircuitos();
+        
         
         //creamos una pantalla para que sirva de interfaz
         
