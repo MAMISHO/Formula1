@@ -17,7 +17,9 @@ public class Piloto {
     String equipo;
     String equipoAnterior;
     String nacionalidad;
-    Date fechaNacimiento;
+    String fechaNacimiento;
+    int p;
+    
     
     public Piloto(){
     
@@ -91,12 +93,20 @@ public class Piloto {
         this.nacionalidad = nacionalidad;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    public int getP() {
+        return this.p;
+    }
+
+    public void setP(int p) {
+        this.p=p;
     }
     
 }

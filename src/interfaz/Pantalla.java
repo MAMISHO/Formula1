@@ -27,12 +27,18 @@ public class Pantalla {
         System.out.println("1) Gestión Pilotos\n");
         System.out.println("2) Gestión Escuderias\n");
         System.out.println("3) Gestión Circuitos\n");
-        System.out.println("4) Gestión Salir\n");
         //ampliar los demas casos de uso en el menu
+        System.out.println("4) Iniciar CM\n");
+        System.out.println("5) Insertar Resultados\n");
+        System.out.println("6) Ver clasificación de Pilotos en CM\n");
+        System.out.println("7) Ver clasificación de Escuderias en CM\n");
+        System.out.println("8) Ver clasificación de Pilotos en GP\n");
+        System.out.println("9) Ver clasificación de Escuderias en GP\n");
+        System.out.println("10) Gestión Salir\n");
         System.out.println("\n_____Selecciona una opción_____\n");
         op=(int)IO.readNumber();
         }
-        while(op<1 || op>4);
+        while(op<1 || op>10);
         
         switch(op){
             case 1:
@@ -44,7 +50,27 @@ public class Pantalla {
             case 3:
                 System.out.println("Entrarte a gestión Pilotos");
                 break;
-            case 4: 
+            case 4:
+                System.out.println("Entrarte a iniciar CM");
+                break;
+            case 5:
+                System.out.println("Entrarte a insertar Resultados");
+                break;
+            case 6:
+                System.out.println("\n*** Ver clasificación de Pilotos en CM ***\n");
+                this.f1.consultaCPCM();
+                break;
+            case 7:
+                System.out.println("\n*** Ver clasificación de Escuderias en CM ***\n");
+                this.f1.consultaCECM();
+                break;
+            case 8:
+                System.out.println("Entraste ver clasificacion pilotos en GP");
+                break;
+            case 9:
+            System.out.println("Entraste ver clasificacion Escuderias en GP");
+                break;
+            case 10: 
                 System.out.println("Selección salir");
                 salir=true;
                 break;
@@ -62,11 +88,12 @@ public class Pantalla {
         System.out.println("2) Baja Escudería\n");
         System.out.println("3) Modificar Escudería\n");
         System.out.println("4) Consultar Escudería\n");
-        System.out.println("5) Regresar a menu principal\n");
+        System.out.println("5) Cambiar pilotos activos\n");
+        System.out.println("6) Regresar a menu principal\n");
         System.out.println("\n_____Selecciona una opción_____\n");
         op=(int)IO.readNumber();
         }
-        while(op<1 || op>5);
+        while(op<1 || op>6);
         
         switch(op){
             case 1:
@@ -89,6 +116,11 @@ public class Pantalla {
                 this.f1.realizarConsultaEscuderia(this.solicitarId());
                 break;
             case 5:
+                System.out.println("\n*** Cambio de pilotos activos ***\n");
+                this.f1.realizarCambioPilotosActivos(this.solicitarId());
+                System.out.println("El cambio es correcto\n");
+                break;
+            case 6:
                 salir=true;
                 break;
         }

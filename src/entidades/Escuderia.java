@@ -22,8 +22,14 @@ public class Escuderia {
     private String neumaticos;
     private String primeraTemporada;
     private String fechaCrea;
+    private int p;
 
     public Escuderia(){
+        this.pilotos=new ArrayList<Piloto>();
+        this.idPilotosActivos=new ArrayList<String>();
+    }
+    public Escuderia(String nombre){
+        this.nombre=nombre;
         this.pilotos=new ArrayList<Piloto>();
         this.idPilotosActivos=new ArrayList<String>();
     }
@@ -146,4 +152,11 @@ public class Escuderia {
         this.fechaCrea = fechaCrea;
     }
     
+    public int getP() {
+        return this.p;
+    }
+
+    public void setP(int p) {
+        this.p=p;
+    }
 }
