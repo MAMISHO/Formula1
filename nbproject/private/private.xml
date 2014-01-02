@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/zadik/NetBeansProjects/Formula1/src/entidades/GranPremio.java</file>
+            <file>file:/home/zadik/NetBeansProjects/Formula1/src/interfaz/Pantalla.java</file>
             <file>file:/home/zadik/NetBeansProjects/Formula1/src/entidades/Circuito.java</file>
             <file>file:/home/zadik/NetBeansProjects/Formula1/src/registros/RegistroEscuderias.java</file>
+            <file>file:/home/zadik/NetBeansProjects/Formula1/src/controlador/Formula1.java</file>
             <file>file:/home/zadik/NetBeansProjects/Formula1/src/entidades/Escuderia.java</file>
             <file>file:/home/zadik/NetBeansProjects/Formula1/src/registros/RegistroCircuitos.java</file>
         </group>

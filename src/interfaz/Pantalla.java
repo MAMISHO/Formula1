@@ -5,7 +5,7 @@
 package interfaz;
 
 import controlador.Formula1;
-import edi.io.IO;
+import poo.io.IO;
 
 /**
  *
@@ -48,7 +48,8 @@ public class Pantalla {
                 this.menuEscuderias();
                 break;
             case 3:
-                System.out.println("Entrarte a gestión Pilotos");
+                System.out.println("Entraste a gestión Pilotos");
+                this.menuCircuitos();
                 break;
             case 4:
                 System.out.println("Entrarte a iniciar CM");
@@ -291,4 +292,112 @@ public class Pantalla {
         //this.f1.realizarBajaEscuderia(idEscuderia);
         return idEscuderia;
     }
-}
+    public void menuCircuitos(){
+        int op=0;
+        Boolean salir=false;
+        while(!salir){
+        do{
+        System.out.println("**** Gestión Circuitos ****\n");
+        System.out.println("1) Alta Circuitoa\n");
+        System.out.println("2) Baja Circuito\n");
+        System.out.println("3) Modificar Circuito\n");
+        System.out.println("4) Consultar Circuito\n");
+        System.out.println("5) Regresar a menu principal\n");
+        System.out.println("\n_____Selecciona una opción_____\n");
+        op=(int)IO.readNumber();
+        }
+        while(op<1 || op>6);
+        
+        switch(op){
+            case 1:
+                this.f1.realizarAltaCircuito();
+                this.introducirDatosCircuito();
+                System.out.println("\nCircuito guardado correctamente");
+                break;
+            case 2:
+                System.out.println("\n** Baja de Circuito **\n");
+                System.out.println("\nintroduce id del circuito: ");
+                
+                this.f1.realizarBajaCircuito(IO.readLine());
+                System.out.println("El Circuito se elimino de forma correcta\n");
+                break;
+            case 3:
+                System.out.println("\n** Modificar Circuito **\n");
+                System.out.println("\nintroduce id del circuito: ");
+                this.f1.realizarModificarCircuito(IO.readLine());
+                this.ModificarDatosCircuito();
+                
+                break;
+            case 4:
+                this.f1.realizarConsultaCircuito(this.solicitarId());
+                break;
+            case 5:
+                salir=true;
+                break;
+            
+        }
+        }
+    }
+    
+     public void introducirDatosCircuito(){
+        
+        
+        String idcircuitos;
+        String nombre;
+        String ubicacion;
+        int longitud;
+        int nvueltas;
+        int distancia;
+        int recordvuelta;
+        Boolean completo=false;
+        Boolean otromas=false;
+        int contador=0;
+        int opcion=1;
+        
+        System.out.println("**Introduzca los datos del Circuito**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nlongitud: ");
+        longitud=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nNumero de vueltas: ");
+        nvueltas=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nDistancia: ");
+        distancia=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nRecord vuelta: ");
+        recordvuelta=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nId del circuito: ");
+        idcircuitos=IO.readLine();
+             
+        
+        
+        this.f1.introducirDatosCircuito(idcircuitos, nombre, longitud ,nvueltas , distancia, recordvuelta);
+    }
+    
+    public void ModificarDatosCircuito(){
+        
+        String idcircuitos;
+        String nombre;
+        String ubicacion;
+        int longitud;
+        int nvueltas;
+        int distancia;
+        int recordvuelta;
+                
+        System.out.println("**Introduzca nuevos datos del Circuito**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nlongitud: ");
+        longitud=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nNumero de vueltas: ");
+        nvueltas=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nDistancia: ");
+        distancia=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nRecord vuelta: ");
+        recordvuelta=Integer.valueOf(IO.readLine()).intValue();
+        
+        
+        
+        this.f1.modificarDatosEscuderia(nombre, longitud ,nvueltas , distancia, recordvuelta);
+    }
+    }
+

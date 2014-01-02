@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import registros.RegistroClasificaciones;
 import registros.RegistroEscuderias;
+import registros.RegistroCircuitos;
 
 /**
  *
@@ -25,12 +26,13 @@ public class Formula1 {
     RegistroClasificaciones registroClasificaciones;
     RegistroEscuderias registroDatosEscuderias;
     //RegistroPilotos registroDatosPilotos;
-    //RegistroCircuitos registroDatosCircuitos;
+    RegistroCircuitos registroDatosCircuitos;
     
     //entidades
     Escuderia escuderia;
     Piloto piloto;
     Posicion posicion;
+    Circuito circuito;
     
     public Formula1(){
         //creamos los registros y la carga de datos se hace
@@ -125,15 +127,21 @@ public class Formula1 {
     //circuitos
     
     public void realizarAltaCircuito(){
+        this.circuito=new Circuito();
         
     }
-    public void realizarBajaCircuito(){
+    public void realizarBajaCircuito(String idcircuito){
+        this.circuito=this.registroDatosCircuitos.introduceIdcircuito(idcircuito);
+        this.registroDatosCircuitos.borraCircuito(circuito);
+    }
+    public void realizarConsultaCircuito(String idcircuito){
+        this.circuito=this.registroDatosCircuitos.introduceIdcircuito(idcircuito);
+        this.circuito.muestradatos(circuito);
         
     }
-    public void realizarConsultaCircuito(){
-        
-    }
-    public void realizarModificarCircuito(){
+    public void realizarModificarCircuito(String idcircuito){
+        this.circuito=this.registroDatosCircuitos.introduceIdcircuito(idcircuito);
+        this.registroDatosCircuitos.borraCircuito(circuito);
         
     }
     

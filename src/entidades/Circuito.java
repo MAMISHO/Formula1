@@ -17,7 +17,10 @@ public class Circuito {
     private int distancia;
     private int recordvuelta;
 
-    public Circuito(/*String idcircuitos,*/ String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
+    public Circuito() {
+    }
+
+    /*public Circuito(/*String idcircuitos, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
         //this.idcircuitos = idcircuitos;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -25,7 +28,7 @@ public class Circuito {
         this.nvueltas = nvueltas;
         this.distancia = distancia;
         this.recordvuelta = recordvuelta;
-    }
+    }*/
     public void introducirDatos(String idcircuitos, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
         this.idcircuitos = idcircuitos;
         this.nombre = nombre;
@@ -49,7 +52,7 @@ public class Circuito {
         
     }
 
-    @Override
+    
     public String toString(Circuito cir) {
         return "Circuito{" + "idcircuitos=" + idcircuitos + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", longitud=" + longitud + ", nvueltas=" + nvueltas + ", distancia=" + distancia + ", recordvuelta=" + recordvuelta + '}';
     }

@@ -22,7 +22,7 @@ public class RegistroCircuitos {
     FileReader fr;
     BufferedReader br;
 
-    public RegistroCircuitos(List<Circuito> ListaCirucitos) {
+    public RegistroCircuitos(List<Circuito> ListaCircuitos) {
         this.ListaCircuitos = ListaCircuitos;
         ruta="src/registros/";
         File archivo=null;
@@ -117,7 +117,7 @@ public class RegistroCircuitos {
         }
     }
     public void cargarCircuitos(){
-        List<Circuito> esc=new ArrayList<Circuito>();
+        List<Circuito> cir=new ArrayList<Circuito>();
         List<String> lineas=new ArrayList<String>();
         try {
        
@@ -159,14 +159,14 @@ public class RegistroCircuitos {
                 circuito.setDistancia(atr[4]);
                 circuito.setRecordvuelta(atr[5]);*/
                                 
-                esc.add(circuito);
+                cir.add(circuito);
             }
         }else{
             System.out.println("No existen circuitos");
         }
         
         //return esc;
-        this.ListaCircuitos=esc;
+        this.ListaCircuitos=cir;
     }
 
     public void guardarCircuito(Circuito cir){
@@ -180,6 +180,9 @@ public class RegistroCircuitos {
         grabar+=cir.getRecordvuelta()+";";
         
         this.escribir(grabar);
+    }
+    public void borraCircuito(Circuito cir){
+        this.eliminarCircuitoLista(cir);
     }
     private void eliminarCircuitoLista(Circuito cir){
         List<Circuito> l=this.getListaCircuitos();
@@ -204,6 +207,15 @@ public class RegistroCircuitos {
             i++;
         }
         this.actualizarFichero();
+    }
+    public Circuito introduceIdcircuito(String idcircuito){
+        Circuito cir=null;
+        for(Circuito e:this.getListaCircuitos()){
+            if(e.getNombre().equals(idcircuito)){
+                cir=e;
+            }
+        }
+        return cir;
     }
     
 }
