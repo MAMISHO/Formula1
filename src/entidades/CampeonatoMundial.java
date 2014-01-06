@@ -16,7 +16,7 @@ public class CampeonatoMundial {
     private String anyo;
     List<GranPremio> grandesPremios;
     //RegistroGranPremio registrosGrandesPremios;
-    int numeroGendesPremios;
+    double numeroGrandesPremios;
     /*
      @overwrite
      * quien invoque el contructor debe pasar el año
@@ -26,14 +26,25 @@ public class CampeonatoMundial {
      * los grandes premios del mismo hasta que soliciten la lista
      * en el metodo
      */
-    
-    //arreglar implementacios
-    public CampeonatoMundial(String anyo,int numeroGendesPremios){
-        this.anyo=anyo;
-        
-        //grandesPremios=new ArrayList<GranPremio>();
+
+    public double getNumeroGrandesPremios() {
+        return numeroGrandesPremios;
     }
 
+    public void setNumeroGrandesPremios(int numeroGrandesPremios) {
+        this.numeroGrandesPremios = numeroGrandesPremios;
+    }
+    
+    //arreglar implementacios
+    public CampeonatoMundial(){
+    grandesPremios=new ArrayList<GranPremio>();
+    }
+    
+    public void introducirDatosCM(String anyo,double numeroGrandesPremios,ArrayList<GranPremio> gp){
+        this.anyo=anyo;
+        this.numeroGrandesPremios=numeroGrandesPremios;
+        
+    }
     
     public String getAnyo() {
         return anyo;
@@ -48,6 +59,8 @@ public class CampeonatoMundial {
         //para esto recorre el registro del mismo
         return grandesPremios;
     }
+    
+    
 
     public void setGrandesPremios(List<GranPremio> grandesPremios) {
         this.grandesPremios = grandesPremios;

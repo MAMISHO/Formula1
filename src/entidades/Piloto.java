@@ -13,7 +13,7 @@ import java.util.Date;
 public class Piloto {
     String idPiloto;
     String nombre;
-    String apelldo;
+    String apellido;
     String equipo;
     String equipoAnterior;
     String nacionalidad;
@@ -37,14 +37,41 @@ public class Piloto {
         this.idPiloto=idPiloto;
         this.equipo=equipo;
     }
-    public void introducirDatos(){
-        
+    
+    public void introducirDatos(String nombre,String apellido,String idPiloto,String equipo,
+    String equipoAnterior,String nacionalidad, String fechaNacimiento){
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.idPiloto=idPiloto;
+    this.equipo=equipo;
+    this.equipoAnterior=equipoAnterior;
+    this.nacionalidad=nacionalidad;
+    this.fechaNacimiento=fechaNacimiento;
+  
     }
     
-    public String imprimirPiloto(){
-        return "imprimir datos de piloto";
+     public void cambiarDatos(String nombre,String apellido,String idPiloto,String equipo,
+    String equipoAnterior,String nacionalidad, String fechaNacimiento){
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.idPiloto=idPiloto;
+    this.equipo=equipo;
+    this.equipoAnterior=equipoAnterior;
+    this.nacionalidad=nacionalidad;
+    this.fechaNacimiento=fechaNacimiento;
+  
     }
-
+    
+    public void mostrarDatos(Piloto p){
+        System.out.println(this.toString(p));
+    }
+    
+    public String toString(Piloto p){
+    String datosPiloto="Piloto\nNombre: "+p.nombre+"\nApellido: "+p.apellido+"\nIdPiloto: "+p.idPiloto+
+            "\nEquipo actual: "+p.equipo+"\nEquipo anterior: "+p.equipoAnterior+"\nNacionalidad: "+
+            p.nacionalidad+"\nFecha de nacimiento: "+p.fechaNacimiento+"\n";
+    return datosPiloto;
+    }
     public String getIdPiloto() {
         return idPiloto;
     }
@@ -61,12 +88,12 @@ public class Piloto {
         this.nombre = nombre;
     }
 
-    public String getApelldo() {
-        return apelldo;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApelldo(String apelldo) {
-        this.apelldo = apelldo;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEquipo() {
@@ -110,3 +137,4 @@ public class Piloto {
     }
     
 }
+
