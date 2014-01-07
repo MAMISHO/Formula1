@@ -199,7 +199,9 @@ public class RegistroPilotos {
         for(Piloto pil:l){
             if(p.getIdPiloto().equals(pil.getIdPiloto())){
                 //this.listaEscuderias.remove(e);
-                this.listaPilotos.set(i, p);
+                this.listaPilotos.remove(pil);
+                //this.listaPilotos.set(i, p);
+                this.listaPilotos.add(p);
                 break;
             }
             i++;
@@ -215,9 +217,9 @@ public class RegistroPilotos {
             fichero = new FileWriter(this.ruta+"R_Piloto.txt");
             pw = new PrintWriter(fichero);
  
-            for(Piloto p:this.getListaPilotos()){
-                this.guardarPiloto(p);
-            }
+           // for(Piloto p:this.getListaPilotos()){
+                //this.guardarPiloto(p);
+            //}
                 //pw.println(cadena);
  
         } catch (Exception e) {

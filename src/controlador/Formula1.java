@@ -112,14 +112,20 @@ public class Formula1 {
         this.piloto=this.registroDatosPilotos.introduceIdPiloto(idPiloto);
         this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
         this.piloto.setEquipoAnterior(this.piloto.getEquipo());
-        this.piloto.setEquipo(this.escuderia.getNombre());
-        
+        //this.piloto.setEquipo(this.escuderia.getNombre());
+        System.out.println(this.escuderia.getNombre().toString());
+        this.escuderia.agregarPiloto(piloto);
+        this.registroDatosEscuderias.introduceIdEscuderia(this.piloto.getEquipoAnterior())
+                .eliminarPiloto(piloto);
         //prueba
         //inicio registra piloto en escudería
         
         //fin registra piloto en escudería
         registroDatosPilotos.guardarPilotoModificado(this.piloto);
-        //Faltan los cambios realizados sobre la escuderia, es decir borrar el piloto de la escuderia
+        this.registroDatosEscuderias.guardarEscuderiaModificada(escuderia);
+        this.registroDatosEscuderias.guardarEscuderiaModificada(this.registroDatosEscuderias.
+                introduceIdEscuderia(this.piloto.getEquipoAnterior()));
+        System.out.println("Cambio Correcto");
     }
     
     public void cargarDatosPilotos(){

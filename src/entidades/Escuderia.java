@@ -59,6 +59,10 @@ public class Escuderia {
         System.out.println(this.toString(esc));
     }
     
+    public void agregarPiloto(Piloto piloto){
+        this.pilotos.add(piloto);
+    }
+    
     public void eliminarPiloto(Piloto piloto){
         this.pilotos.remove(piloto);
     }
