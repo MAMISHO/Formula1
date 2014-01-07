@@ -108,30 +108,27 @@ public class Formula1 {
     this.registroDatosPilotos.guardarPilotoModificado(piloto);
     }
     
-    public void cambiarEquipoPiloto(String idPiloto,String idEscuderia){
+     public void cambiarEquipoPiloto(String idPiloto,String idEscuderia){
         this.piloto=this.registroDatosPilotos.introduceIdPiloto(idPiloto);
+        Escuderia esc=this.registroDatosEscuderias.introduceIdEscuderia(this.piloto.getEquipo());
         this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
-        this.piloto.setEquipoAnterior(this.piloto.getEquipo());
+        this.piloto.setEquipoAnterior(esc.getNombre());
         this.piloto.setEquipo(this.escuderia.getNombre());
-        System.out.println("Get de escuderia \n"+this.escuderia.getNombre().toString());
-        
-        
-        
+       
         
         this.escuderia.agregarPiloto(piloto);
         //this.registroDatosEscuderias.introduceIdEscuderia(this.piloto.getEquipoAnterior()).eliminarPiloto(piloto);
         
-        this.escuderia.eliminarPiloto(piloto);
-        //prueba
-        //inicio registra piloto en escudería
+        esc.eliminarPiloto(piloto);
         
-        //fin registra piloto en escudería
+        //System.out.println(this.escuderia.getNombre().toString());
+        this.escuderia.agregarPiloto(piloto);
+        esc.eliminarPiloto(piloto);
         
         
-        registroDatosPilotos.guardarPilotoModificado(this.piloto);
+        this.registroDatosPilotos.guardarPilotoModificado(this.piloto);
         this.registroDatosEscuderias.guardarEscuderiaModificada(escuderia);
-        this.registroDatosEscuderias.guardarEscuderiaModificada(this.registroDatosEscuderias.
-                introduceIdEscuderia(this.piloto.getEquipoAnterior()));
+        this.registroDatosEscuderias.guardarEscuderiaModificada(esc);
         System.out.println("Cambio Correcto");
     }
     
@@ -269,6 +266,15 @@ public class Formula1 {
         this.posicion.mostrarClasificacionPilotosCM(posiciones);
     }
     //metodos necesarios
+    
+    public GranPremio getGranPremio() {
+        return granPremio;
+    }
+
+    public void setGranPremio(GranPremio granPremio) {
+        this.granPremio = granPremio;
+    }
+    
     public void setCampeonatoMundial(CampeonatoMundial cm){
         this.campeonatoMundial=cm;
     }
