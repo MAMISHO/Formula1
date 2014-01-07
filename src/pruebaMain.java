@@ -2,6 +2,7 @@
 import controlador.Formula1;
 import entidades.CampeonatoMundial;
 import registros.RegistroEscuderias;
+import registros.RegistroPilotos;
 import java.util.List;
 import java.util.ArrayList;
 import entidades.Escuderia;
@@ -21,6 +22,7 @@ import java.util.Date;
  */
 public class pruebaMain {
     public static void main(String [] arg) throws ParseException {
+        
     /*
         //creamos una lista de pilotos activos
         //como solo son string que contienen claves lo creamos
@@ -84,7 +86,9 @@ public class pruebaMain {
         
         
         f1.cargarDatosEscuderias();//cargamos los datos de los ficheros
-        //f1.cargarDatosPilotos();
+        f1.cargarDatosPilotos();
+        f1.cargarDatosGrandesPremios();
+        f1.cargarDatosCM();
         //f1.cargarDatosCircuitos();
         
         

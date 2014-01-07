@@ -17,15 +17,15 @@ import java.util.logging.Logger;
  *
  * @author MAMISHO
  */
-public class RegistroEscuderias {
-    List<Escuderia> listaEscuderias;
+public class RegistroPilotos {
+    List<Piloto> listaPilotos;
     String ruta;
     File archivo;
     FileReader fr;
     BufferedReader br;
     
-    public RegistroEscuderias(){
-        listaEscuderias=new ArrayList<Escuderia>();
+    public RegistroPilotos(){
+        listaPilotos=new ArrayList<Piloto>();
         ruta="src/registros/";
         File archivo = null;
         FileReader fr = null;
@@ -36,7 +36,7 @@ public class RegistroEscuderias {
         try {
          // Apertura del fichero y creacion de BufferedReader para poder
          // hacer una lectura comoda (disponer del metodo readLine()).
-           archivo = new File (this.ruta+"R_Escuderia.txt");
+           archivo = new File (this.ruta+"R_Piloto.txt");
            fr = new FileReader (archivo);
            br = new BufferedReader(fr);
            
@@ -61,31 +61,23 @@ public class RegistroEscuderias {
     }
   }
     
-    public void guardarEscuderia(Escuderia esc){
-        this.listaEscuderias.add(esc);
+    public void guardarPiloto(Piloto p){
+       this.listaPilotos.add(p);
         String grabar="";
-        String pilotos="PIL1:PIL2:PIL3:PIL4:";
-        /*for(Piloto piloto:esc.getPilotos()){
-            pilotos+=piloto.getIdPiloto()+":";
-        }*/
-        pilotos=pilotos.substring(0, pilotos.length()-1);
-        
-        grabar+=esc.getNombre()+";";
-        grabar+=pilotos+";";
-        grabar+=esc.getIdPilotosActivos().get(0)+":";
-        grabar+=esc.getIdPilotosActivos().get(1)+";";
-        grabar+=esc.getSede()+";";
-        grabar+=esc.getChasis()+";";
-        grabar+=esc.getMotor()+";";
-        grabar+=esc.getNeumaticos()+";";
-        grabar+=esc.getPrimeraTemporada()+";";
-        grabar+=esc.getFechaCrea();
+          
+        grabar+=p.getNombre()+";";
+        grabar+=p.getApellido()+";";
+        grabar+=p.getIdPiloto()+";";
+        grabar+=p.getEquipo()+";";
+        grabar+=p.getEquipoAnterior()+";";
+        grabar+=p.getNacionalidad()+";";
+        grabar+=p.getFechaNacimiento()+";";
         
         this.escribir(grabar);
     }
     
-    public void guardarEscuderiaModificada(Escuderia esc){
-       this.modificarEscuderiaLista(esc);
+    public void guardarPilotoModificado(Piloto p){
+       this.modificarPilotoLista(p);
     }
     
     private void escribir(String cadena){
@@ -93,7 +85,7 @@ public class RegistroEscuderias {
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter(this.ruta+"R_Escuderia.txt",true);
+            fichero = new FileWriter(this.ruta+"R_Piloto.txt",true);
             pw = new PrintWriter(fichero);
  
             
@@ -113,26 +105,25 @@ public class RegistroEscuderias {
         }
     }
     
-    public Escuderia introduceIdEscuderia(String idescuderia){
-        Escuderia esc=null;
-        for(Escuderia e:this.getListaEscuderias()){
-            if(e.getNombre().equals(idescuderia)){
-                esc=e;
+    public Piloto introduceIdPiloto(String idPiloto){
+        Piloto p=null;
+        for(Piloto e:this.getListaPilotos()){
+            if(e.getIdPiloto().equals(idPiloto)){
+                p=e;
             }
         }
-        return esc;
+        return p;
     }
     
-    public void borraEscuderia(Escuderia esc){
-        this.eliminarEscuderiaLista(esc);
+    public void borraPiloto(Piloto p){
+        this.eliminarPilotoLista(p);
     }
-    
-    public void cargarEscuderias(){
-        List<Escuderia> esc=new ArrayList<Escuderia>();
+        public void cargarPilotos(){
+        List<Piloto> pil=new ArrayList<Piloto>();
         List<String> lineas=new ArrayList<String>();
         try {
        
-           archivo = new File (this.ruta+"R_Escuderia.txt");
+           archivo = new File (this.ruta+"R_Piloto.txt");
            fr = new FileReader (archivo);
            br = new BufferedReader(fr);
            
@@ -156,77 +147,59 @@ public class RegistroEscuderias {
             e2.printStackTrace();
         }
     }
-        //si hay ñectura de lineas añadimos a la lista de escuderias
+      
         if(!lineas.isEmpty()){
             for(String a:lineas){
                 String[] atr;
-                Escuderia escuderia=new Escuderia();
+                Piloto piloto=new Piloto();
                 atr=a.split(";");
-                escuderia.setNombre(atr[0]);
+                             
+                            
                 
-                //atr[1] son los pilotos, pero no los construyo
-                //hasta que lo implementen
+                piloto.setNombre(atr[0]);
+                piloto.setApellido(atr[1]);
+                piloto.setIdPiloto(atr[2]);
+                piloto.setEquipo(atr[3]);
+                piloto.setEquipoAnterior(atr[4]);
+                piloto.setNacionalidad(atr[5]);
+                piloto.setFechaNacimiento(atr[6]);
                 
-                String[] pActivos=atr[2].split(":");
-                List<String> pilotosActivos=new ArrayList<String>();
-                pilotosActivos.add(pActivos[0]);
-                pilotosActivos.add(pActivos[1]);
-                
-                escuderia.setIdPilotosActivos(pilotosActivos);
-                
-                escuderia.setSede(atr[3]);
-                escuderia.setChasis(atr[4]);
-                escuderia.setMotor(atr[5]);
-                escuderia.setNeumaticos(atr[6]);
-                escuderia.setPrimeraTemporada(atr[7]);
-                
-                //la fecha la convertimos
-                /*SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-                String dateInString = atr[8];
-                Date date = null;
-                try {
-                    date = formatter.parse(dateInString);
-                } catch (ParseException ex) {
-                    Logger.getLogger(RegistroEscuderias.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
-                escuderia.setFechaCrea(atr[7]);
-                
-                esc.add(escuderia);
+                pil.add(piloto);
             }
         }else{
-            System.out.println("No existen escuderias");
+            System.out.println("No existen pilotos");
         }
         
         //return esc;
-        this.listaEscuderias=esc;
+        this.listaPilotos=pil;
     }
 
-    public List<Escuderia> getListaEscuderias() {
-        return listaEscuderias;
+    public List<Piloto> getListaPilotos() {
+        return listaPilotos;
     }
 
-    public void setListaEscuderias(List<Escuderia> listaEscuderias) {
-        this.listaEscuderias = listaEscuderias;
+    public void setListaPilotos(List<Piloto> listaPilotos) {
+        this.listaPilotos = listaPilotos;
     }
     
-    private void eliminarEscuderiaLista(Escuderia esc){
-        List<Escuderia> l=this.getListaEscuderias();
-        for(Escuderia e:l){
-            if(esc.getNombre().equals(e.getNombre())){
-                this.listaEscuderias.remove(e);
+    private void eliminarPilotoLista(Piloto p){
+        List<Piloto> l=this.getListaPilotos();
+        for(Piloto pil:l){
+            if(p.getIdPiloto().equals(pil.getIdPiloto())){
+                this.listaPilotos.remove(pil);
                 break;
             }
         }
         this.actualizarFichero();
     }
     
-    private void modificarEscuderiaLista(Escuderia esc){
-        List<Escuderia> l=this.getListaEscuderias();
+    private void modificarPilotoLista(Piloto p){
+        List<Piloto> l=this.getListaPilotos();
         int i=0;
-        for(Escuderia e:l){
-            if(esc.getNombre().equals(e.getNombre())){
+        for(Piloto pil:l){
+            if(p.getIdPiloto().equals(pil.getIdPiloto())){
                 //this.listaEscuderias.remove(e);
-                this.listaEscuderias.set(i, esc);
+                this.listaPilotos.set(i, p);
                 break;
             }
             i++;
@@ -239,11 +212,11 @@ public class RegistroEscuderias {
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter(this.ruta+"R_Escuderia.txt");
+            fichero = new FileWriter(this.ruta+"R_Piloto.txt");
             pw = new PrintWriter(fichero);
  
-            for(Escuderia e:this.getListaEscuderias()){
-                this.guardarEscuderia(e);
+            for(Piloto p:this.getListaPilotos()){
+                this.guardarPiloto(p);
             }
                 //pw.println(cadena);
  

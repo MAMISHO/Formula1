@@ -5,7 +5,10 @@
 package interfaz;
 
 import controlador.Formula1;
-import edi.io.IO;
+import entidades.Circuito;
+import entidades.GranPremio;
+import java.util.ArrayList;
+import poo.io.IO;
 
 /**
  *
@@ -43,18 +46,22 @@ public class Pantalla {
         switch(op){
             case 1:
                 System.out.println("Entrarte a gestión Pilotos");
+                this.menuPilotos();
                 break;
             case 2:
+                System.out.println("Entraste a gestión Escuderias");
                 this.menuEscuderias();
                 break;
             case 3:
-                System.out.println("Entrarte a gestión Pilotos");
+                System.out.println("Entraste a gestión Circuitos");
+                this.menuCircuitos();
                 break;
             case 4:
-                System.out.println("Entrarte a iniciar CM");
+                System.out.println("Entraste a iniciar CM");
+                this.inicializarCM();
                 break;
             case 5:
-                System.out.println("Entrarte a insertar Resultados");
+                System.out.println("Entraste a insertar Resultados");
                 break;
             case 6:
                 System.out.println("\n*** Ver clasificación de Pilotos en CM ***\n");
@@ -76,6 +83,165 @@ public class Pantalla {
                 break;
         }
         }
+    }
+    
+    public void inicializarCM(){
+    double numeroGP,i;
+    String anyo;
+    String nombre;
+    String pais;
+    Circuito circuito;
+    String idCircuito;
+    String dia;
+    String mes;
+    String anyoGP;
+    ArrayList<GranPremio> grandesPremios=new ArrayList<GranPremio>();
+     this.f1.inicializaCM();
+     System.out.println("\nIntroduzca el año en que celebrara el Campeonato Mundial\n");
+     anyo=IO.readLine();
+     System.out.println("\nIntroduzca el nº de Grandes Premios que tendran lugar.\n"
+             + "Este debera estar entre 18 y 20\n");
+     numeroGP=IO.readNumber();
+     for(i=0;i<numeroGP;i++){
+     this.f1.inicializaGP();
+    
+      System.out.println("**Introduzca los datos del Gran Premio**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nPais: ");
+        pais=IO.readLine();
+        System.out.println("\nId del circuito donde se celebrara: ");
+        idCircuito=IO.readLine();
+        System.out.println("\nDia: ");
+        dia=IO.readLine();
+        System.out.println("\nMes: ");
+        mes=IO.readLine();
+        System.out.println("\nAño: ");
+        anyoGP=IO.readLine();
+        circuito=this.f1.introduceIdCircuito(idCircuito);
+        GranPremio granPremio=new GranPremio();
+        granPremio.introducirDatosGP(nombre, pais, circuito, dia, mes, anyo);
+        grandesPremios.add(granPremio);
+        this.f1.introducirDatosGP(nombre, pais, circuito, dia, mes, anyo);
+        System.out.println("Gran Premio inicializado correctamente.");
+     }
+     this.f1.introducirDatosCM(anyo, numeroGP, grandesPremios);
+     System.out.println("Campeonato Mundial inicializado correctamente.");
+     }
+    
+   private void menuPilotos(){
+        int op=0;
+        Boolean salir=false;
+        while(!salir){
+        do{
+        System.out.println("**** Gestión Pilotos ****\n");
+        System.out.println("1) Alta Piloto\n");
+        System.out.println("2) Baja Piloto\n");
+        System.out.println("3) Modificar Piloto\n");
+        System.out.println("4) Consultar Piloto\n");
+        System.out.println("5) Cambiar Equipo de Piloto\n");
+        System.out.println("6) Regresar a menu principal\n");
+        System.out.println("\n_____Selecciona una opción_____\n");
+        op=(int)IO.readNumber();
+        }
+        while(op<1 || op>6);
+        
+        switch(op){
+            case 1:
+                this.f1.realizarAltaPiloto();
+                this.introducirDatosPiloto();
+                System.out.println("\nPiloto guardado correctamente");
+                break;
+            case 2:
+                System.out.println("\n** Baja de Piloto **\n");
+                this.f1.realizarBajaPiloto(this.solicitarIdPiloto());
+                System.out.println("El Piloto se elimino de forma correcta\n");
+                break;
+            case 3:
+                System.out.println("\n** Modificar Piloto **\n");
+                this.f1.realizarModificarPiloto(this.solicitarIdPiloto());
+                this.ModificarDatosPiloto();
+                break;
+            case 4:
+                System.out.println("\n** Consultar Piloto **\n");
+                this.f1.realizarConsultaPiloto(this.solicitarIdPiloto());
+                break;
+            case 5:
+                System.out.println("\n*** Cambio de equipo de piloto ***\n");
+                this.f1.cambiarEquipoPiloto(this.solicitarIdPiloto(),this.solicitarId());
+                System.out.println("El cambio es correcto\n");
+                break;
+            case 6:
+                salir=true;
+                break;
+        }
+        }
+    }
+    public void introducirDatosPiloto(){
+        String idPiloto;
+        String nombre;
+        String apellido;
+        String equipo;
+        String equipoAnterior;
+        String nacionalidad;
+        String fechaNacimiento;
+        
+        System.out.println("**Introduzca los datos del Piloto**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nApellido: ");
+        apellido=IO.readLine();
+        System.out.println("\nIdPiloto(formado por las 3 primeras letras del nombre y las "
+                + "3 primeras del apellido): ");
+        idPiloto=IO.readLine();
+        System.out.println("\nEquipo: ");
+        equipo=IO.readLine();
+        System.out.println("\nEquipo anterior: ");
+        equipoAnterior=IO.readLine();
+        System.out.println("\nNacionalidad: ");
+        nacionalidad=IO.readLine();
+        System.out.println("\nFecha nacimiento(dd-mm-yyy): ");
+        fechaNacimiento=IO.readLine();
+        
+       this.f1.introducirDatosPiloto(nombre,apellido,idPiloto,equipo,equipoAnterior,nacionalidad,
+               fechaNacimiento);
+    }
+   
+    public void ModificarDatosPiloto(){
+        String idPiloto;
+        String nombre;
+        String apellido;
+        String equipo;
+        String equipoAnterior;
+        String nacionalidad;
+        String fechaNacimiento;
+       
+        System.out.println("**Introduzca nuevos datos de la Escudería**");
+         System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nApellido: ");
+        apellido=IO.readLine();
+        System.out.println("\nIdPiloto(formado por las 3 primeras letras del nombre y las "
+                + "3 primeras del apellido): ");
+        idPiloto=IO.readLine();
+        System.out.println("\nEquipo: ");
+        equipo=IO.readLine();
+        System.out.println("\nEquipo anterior: ");
+        equipoAnterior=IO.readLine();
+        System.out.println("\nNacionalidad: ");
+        nacionalidad=IO.readLine();
+        System.out.println("\nFecha nacimiento(dd-mm-yyy): ");
+        fechaNacimiento=IO.readLine();
+        
+        this.f1.modificarDatosPiloto(nombre,apellido,idPiloto,equipo,equipoAnterior,nacionalidad,
+               fechaNacimiento);
+    }
+    
+    public String solicitarIdPiloto(){
+        String idPiloto;
+        System.out.println("Introduce el id del piloto\n");
+        idPiloto=IO.readLine();
+        return idPiloto;
     }
     
     private void menuEscuderias(){
@@ -295,10 +461,127 @@ public class Pantalla {
         //this.f1.realizarBajaEscuderia(idEscuderia);
         return idEscuderia;
     }
+<<<<<<< HEAD
     public String solicitarIdPiloto(String mensaje){
         String piloto;
         System.out.println(mensaje);
         piloto=IO.readLine();
         return piloto;
     }
+=======
+    public void menuCircuitos(){
+        int op=0;
+        Boolean salir=false;
+        while(!salir){
+        do{
+        System.out.println("**** Gestión Circuitos ****\n");
+        System.out.println("1) Alta Circuitoa\n");
+        System.out.println("2) Baja Circuito\n");
+        System.out.println("3) Modificar Circuito\n");
+        System.out.println("4) Consultar Circuito\n");
+        System.out.println("5) Regresar a menu principal\n");
+        System.out.println("\n_____Selecciona una opción_____\n");
+        op=(int)IO.readNumber();
+        }
+        while(op<1 || op>6);
+        
+        switch(op){
+            case 1:
+                this.f1.realizarAltaCircuito();
+                this.introducirDatosCircuito();
+                System.out.println("\nCircuito guardado correctamente");
+                break;
+            case 2:
+                System.out.println("\n** Baja de Circuito **\n");
+                System.out.println("\nintroduce id del circuito: ");
+                
+                this.f1.realizarBajaCircuito(IO.readLine());
+                System.out.println("El Circuito se elimino de forma correcta\n");
+                break;
+            case 3:
+                System.out.println("\n** Modificar Circuito **\n");
+                System.out.println("\nintroduce id del circuito: ");
+                this.f1.realizarModificarCircuito(IO.readLine());
+                this.ModificarDatosCircuito();
+                
+                break;
+            case 4:
+                this.f1.realizarConsultaCircuito(this.solicitarId());
+                break;
+            case 5:
+                salir=true;
+                break;
+            
+        }
+        }
+    }
+    
+     public void introducirDatosCircuito(){
+        
+        
+        String idcircuitos;
+        String nombre;
+        String ubicacion;
+        int longitud;
+        int nvueltas;
+        int distancia;
+        int recordvuelta;
+        Boolean completo=false;
+        Boolean otromas=false;
+        int contador=0;
+        int opcion=1;
+        
+        System.out.println("**Introduzca los datos del Circuito**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nlongitud: ");
+        longitud=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nNumero de vueltas: ");
+        nvueltas=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nDistancia: ");
+        distancia=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nRecord vuelta: ");
+        recordvuelta=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nId del circuito: ");
+        idcircuitos=IO.readLine();
+             
+        
+        
+        //this.f1.introducirDatosCircuito(idcircuitos, nombre, longitud ,nvueltas , distancia, recordvuelta);
+    }
+    
+    public void ModificarDatosCircuito(){
+        
+        String idcircuitos;
+        String nombre;
+        String ubicacion;
+        int longitud;
+        int nvueltas;
+        int distancia;
+        int recordvuelta;
+                
+        System.out.println("**Introduzca nuevos datos del Circuito**");
+        System.out.println("\nNombre: ");
+        nombre=IO.readLine();
+        System.out.println("\nlongitud: ");
+        longitud=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nNumero de vueltas: ");
+        nvueltas=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nDistancia: ");
+        distancia=Integer.valueOf(IO.readLine()).intValue();
+        System.out.println("\nRecord vuelta: ");
+        recordvuelta=Integer.valueOf(IO.readLine()).intValue();
+        
+        
+        
+        //this.f1.modificarDatosEscuderia(nombre, longitud ,nvueltas , distancia, recordvuelta);
+    }
+ public String solicitarIdCircuito(){
+        String idCircuito;
+        System.out.println("Introduce el id del piloto\n");
+        idCircuito=IO.readLine();
+        return idCircuito;
+    }    
+>>>>>>> 3b77095a1d107ea31134d76044f7d040473dec25
 }
+
