@@ -122,9 +122,7 @@ public class Pantalla {
         System.out.println("\nAño: ");
         anyoGP=IO.readLine();
         circuito=this.f1.introduceIdCircuito(idCircuito);
-        GranPremio granPremio=new GranPremio();
-        granPremio.introducirDatosGP(nombre, pais, circuito, dia, mes, anyo);
-        grandesPremios.add(granPremio);
+        grandesPremios.add(this.f1.getGranPremio());
         this.f1.introducirDatosGP(nombre, pais, circuito, dia, mes, anyo);
         System.out.println("Gran Premio inicializado correctamente.");
      }

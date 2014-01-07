@@ -216,6 +216,7 @@ public class RegistroPilotos {
         {
             fichero = new FileWriter(this.ruta+"R_Piloto.txt");
             pw = new PrintWriter(fichero);
+<<<<<<< HEAD
             
             int cont=this.getListaPilotos().size();
             int i;
@@ -227,6 +228,12 @@ public class RegistroPilotos {
            /*for(Piloto p:this.listaPilotos){
                 this.guardarPiloto(p);
             }*/
+=======
+ 
+           for(Piloto p:this.getListaPilotos()){
+                this.guardarPiloto(p);
+            }
+>>>>>>> b55e05e5c2cd2fed03b35c4dddac877d7e019107
                 //pw.println(cadena);
  
         } catch (Exception e) {

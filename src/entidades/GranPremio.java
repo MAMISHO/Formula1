@@ -20,6 +20,10 @@ public class GranPremio {
     Posicion posicion;
     String idGranPremio;
 
+     public GranPremio(){
+    
+    }
+    
     public Circuito getCircuito() {
         return circuito;
     }
@@ -35,9 +39,7 @@ public class GranPremio {
     public void setIdGranPremio(String idGranPremio) {
         this.idGranPremio = idGranPremio;
     }
-    public GranPremio(){
-    
-    }
+   
     
     public void introducirDatosGP(String nombre, String pais, Circuito circuito, String dia,
             String mes, String anyo) {
