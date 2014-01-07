@@ -171,7 +171,7 @@ public class RegistroCircuitos {
 
     public void guardarCircuito(Circuito cir){
         String grabar="";
-                
+        grabar+=cir.getIdcircuito()+";";
         grabar+=cir.getNombre()+";";
         grabar+=cir.getUbicacion()+";";
         grabar+=cir.getLongitud()+";";

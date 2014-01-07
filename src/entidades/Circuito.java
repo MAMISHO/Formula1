@@ -58,12 +58,12 @@ public class Circuito {
     }
     
 
-    public String getIdcircuitos() {
+    public String getIdcircuito() {
         return idcircuito;
     }
 
-    public void setIdcircuitos(String idcircuitos) {
-        this.idcircuito = idcircuitos;
+    public void setIdcircuito(String idcircuito) {
+        this.idcircuito = idcircuito;
     }
 
     public String getNombre() {

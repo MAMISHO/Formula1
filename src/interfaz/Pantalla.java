@@ -64,6 +64,7 @@ public class Pantalla {
                 break;
             case 5:
                 System.out.println("Entraste a insertar Resultados");
+                this.f1.almacenarResultados(solicitarIdGP());
                 break;
             case 6:
                 System.out.println("\n*** Ver clasificación de Pilotos en CM ***\n");
@@ -534,6 +535,8 @@ public class Pantalla {
         int opcion=1;
         
         System.out.println("**Introduzca los datos del Circuito**");
+        System.out.println("\nId del circuito: ");
+        idcircuito=IO.readLine();
         System.out.println("\nNombre: ");
         nombre=IO.readLine();
         System.out.println("\nUbicacion: ");
@@ -545,12 +548,7 @@ public class Pantalla {
         System.out.println("\nDistancia: ");
         distancia=Integer.valueOf(IO.readLine()).intValue();
         System.out.println("\nRecord vuelta: ");
-        recordvuelta=Integer.valueOf(IO.readLine()).intValue();
-        System.out.println("\nId del circuito: ");
-        idcircuito=IO.readLine();
-             
-        
-        
+        recordvuelta=Integer.valueOf(IO.readLine()).intValue();  
         this.f1.introducirDatosCircuito(idcircuito,nombre, ubicacion,longitud ,nvueltas , distancia, recordvuelta);
     }
     
@@ -565,6 +563,8 @@ public class Pantalla {
         int recordvuelta;
                 
         System.out.println("**Introduzca nuevos datos del Circuito**");
+        System.out.println("\nId del circuito: ");
+        idcircuito=IO.readLine();
         System.out.println("\nNombre: ");
         nombre=IO.readLine();
         System.out.println("\nUbicacion: ");
@@ -577,19 +577,20 @@ public class Pantalla {
         distancia=Integer.valueOf(IO.readLine()).intValue();
         System.out.println("\nRecord vuelta: ");
         recordvuelta=Integer.valueOf(IO.readLine()).intValue();
-        System.out.println("\nId del circuito: ");
-        idcircuito=IO.readLine();
-        
-        
-        
         this.f1.modificarDatosCircuito(idcircuito,nombre, ubicacion,longitud ,nvueltas , distancia, recordvuelta);
     }
- public String solicitarIdCircuito(){
+    public String solicitarIdCircuito(){
         String idCircuito;
         System.out.println("Introduce el id del circuito\n");
         idCircuito=IO.readLine();
         return idCircuito;
-    }    
+    }  
+    public String solicitarIdGP(){
+        String idGP;
+        System.out.println("Introduce el id Gran Premio\n");
+        idGP=IO.readLine();
+        return idGP;
+    } 
 //>>>>>>> 3b77095a1d107ea31134d76044f7d040473dec25
 }
 

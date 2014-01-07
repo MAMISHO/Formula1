@@ -257,14 +257,25 @@ public class Formula1 {
         List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
         this.posicion.mostrarClasificacionPilotosCM(posiciones);
     }
-    //metodos necesarios
     
+    // metodos de consultas de clasificacion de grandes premios
+    public void consultaCEGP(){
+        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
+        this.posicion.mostrarClasificacionEscuderiasCM(posiciones);
+    }
+    
+    public void consultaCPGP(){
+        List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
+        this.posicion.mostrarClasificacionPilotosCM(posiciones);
+    }
+    //metodos necesarios
     public void setCampeonatoMundial(CampeonatoMundial cm){
         this.campeonatoMundial=cm;
     }
-    
     public CampeonatoMundial getCampeonatoMundial(){
         return this.campeonatoMundial;
     }
-    
+    public void almacenarResultados(String idGp){
+        this.granPremio=this.registroDatosGranPremio.
+    }
 }

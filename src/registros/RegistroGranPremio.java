@@ -172,4 +172,9 @@ public class RegistroGranPremio {
     public List<GranPremio> cargarGrandesPremios(){
         return this.listaGrandesPremios;
     }
+    public GranPremio getGranPremio(String idGP){
+        for(GranPremio gp:this.listaGrandesPremios){
+            
+        }
+    }
 }

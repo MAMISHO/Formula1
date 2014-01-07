@@ -53,6 +53,11 @@ public class RegistroClasificaciones {
         Collections.sort(l, new ComparadorPosicion());
         return l;
     }
+    public List<Posicion> obtenerListaPosicionesGP(String idGranPremio){
+        List<Posicion> l=this.listaPosiciones;
+        Collections.sort(l, new ComparadorPosicion());
+        return l;
+    }
 
     public List<Posicion> getListaPosiciones() {
         return listaPosiciones;
