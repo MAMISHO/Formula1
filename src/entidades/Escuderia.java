@@ -58,6 +58,10 @@ public class Escuderia {
     public void mostrarDatos(Escuderia esc){
         System.out.println(this.toString(esc));
     }
+    
+    public void eliminarPiloto(Piloto piloto){
+        this.pilotos.remove(piloto);
+    }
 
     private String toString(Escuderia esc){
         String datosEscuderia;

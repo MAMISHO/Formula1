@@ -47,7 +47,7 @@ public class Pantalla {
         
         switch(op){
             case 1:
-                System.out.println("Entrarte a gestión Pilotos");
+                System.out.println("Entraste a gestión Pilotos");
                 this.menuPilotos();
                 break;
             case 2:

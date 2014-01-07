@@ -97,9 +97,9 @@ public class Formula1 {
     }
     
     public void introducirDatosPiloto(String nombre,String apellido,String idPiloto,String equipo,
-    String equipoAnterior,String nacionalidad, String fechaNacimiento){
-    this.piloto.introducirDatos(nombre,apellido,idPiloto,equipo,equipoAnterior,nacionalidad,fechaNacimiento);
-    this.registroDatosPilotos.guardarPiloto(this.piloto);
+        String equipoAnterior,String nacionalidad, String fechaNacimiento){
+        this.piloto.introducirDatos(nombre,apellido,idPiloto,equipo,equipoAnterior,nacionalidad,fechaNacimiento);
+        this.registroDatosPilotos.guardarPiloto(this.piloto);
     }
     
     public void modificarDatosPiloto(String nombre,String apellido,String idPiloto,String equipo,
@@ -109,12 +109,17 @@ public class Formula1 {
     }
     
     public void cambiarEquipoPiloto(String idPiloto,String idEscuderia){
-    this.piloto=this.registroDatosPilotos.introduceIdPiloto(idPiloto);
-    this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
-    this.piloto.setEquipoAnterior(this.piloto.getEquipo());
-    this.piloto.setEquipo(this.escuderia.getNombre());
-    registroDatosPilotos.guardarPilotoModificado(this.piloto);
-    //Faltan los cambios realizados sobre la escuderia, es decir borrar el piloto de la escuderia
+        this.piloto=this.registroDatosPilotos.introduceIdPiloto(idPiloto);
+        this.escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
+        this.piloto.setEquipoAnterior(this.piloto.getEquipo());
+        this.piloto.setEquipo(this.escuderia.getNombre());
+        
+        //prueba
+        //inicio registra piloto en escudería
+        
+        //fin registra piloto en escudería
+        registroDatosPilotos.guardarPilotoModificado(this.piloto);
+        //Faltan los cambios realizados sobre la escuderia, es decir borrar el piloto de la escuderia
     }
     
     public void cargarDatosPilotos(){
