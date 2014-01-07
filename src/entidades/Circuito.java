@@ -9,7 +9,7 @@ package entidades;
  * @author MAMISHO
  */
 public class Circuito {
-    private String idcircuitos;
+    private String idcircuito;
     private String nombre;
     private String ubicacion;
     private int longitud;
@@ -29,8 +29,8 @@ public class Circuito {
         this.distancia = distancia;
         this.recordvuelta = recordvuelta;
     }*/
-    public void introducirDatos(String idcircuitos, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
-        this.idcircuitos = idcircuitos;
+    public void introducirDatos(String idcircuito, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
+        this.idcircuito = idcircuito;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.longitud = longitud;
@@ -38,8 +38,8 @@ public class Circuito {
         this.distancia = distancia;
         this.recordvuelta = recordvuelta;
     }
-    public void modificarDatos(String idcircuitos, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
-        this.idcircuitos = idcircuitos;
+    public void modificarDatos(String idcircuito, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta) {
+        this.idcircuito = idcircuito;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.longitud = longitud;
@@ -54,16 +54,16 @@ public class Circuito {
 
     
     public String toString(Circuito cir) {
-        return "Circuito{" + "idcircuitos=" + idcircuitos + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", longitud=" + longitud + ", nvueltas=" + nvueltas + ", distancia=" + distancia + ", recordvuelta=" + recordvuelta + '}';
+        return "Circuito{" + "idcircuitos=" + idcircuito + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", longitud=" + longitud + ", nvueltas=" + nvueltas + ", distancia=" + distancia + ", recordvuelta=" + recordvuelta + '}';
     }
     
 
     public String getIdcircuitos() {
-        return idcircuitos;
+        return idcircuito;
     }
 
     public void setIdcircuitos(String idcircuitos) {
-        this.idcircuitos = idcircuitos;
+        this.idcircuito = idcircuitos;
     }
 
     public String getNombre() {

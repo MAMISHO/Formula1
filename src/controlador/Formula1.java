@@ -223,8 +223,17 @@ public class Formula1 {
     }
     public void realizarModificarCircuito(String idcircuito){
         this.circuito=this.registroDatosCircuitos.introduceIdcircuito(idcircuito);
-        this.registroDatosCircuitos.borraCircuito(circuito);
+        this.circuito.muestradatos(circuito);
         
+    }
+    public void introducirDatosCircuito(String idcircuito, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta){
+        this.circuito.introducirDatos(idcircuito,nombre, ubicacion,longitud ,nvueltas , distancia, recordvuelta);
+        this.registroDatosCircuitos.guardarCircuito(this.circuito);
+    }
+    
+    public void modificarDatosCircuito(String idcircuito, String nombre, String ubicacion, int longitud, int nvueltas, int distancia, int recordvuelta){
+        this.circuito.introducirDatos(idcircuito,nombre, ubicacion,longitud ,nvueltas , distancia, recordvuelta);
+        this.registroDatosCircuitos.guardarCircuito(this.circuito);
     }
     
     public void cargarDatosEscuderias(){
