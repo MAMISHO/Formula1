@@ -276,6 +276,6 @@ public class Formula1 {
         return this.campeonatoMundial;
     }
     public void almacenarResultados(String idGp){
-        this.granPremio=this.registroDatosGranPremio.
+        //this.granPremio=this.registroDatosGranPremio.
     }
 }

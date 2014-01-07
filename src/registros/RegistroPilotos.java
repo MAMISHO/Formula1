@@ -71,7 +71,7 @@ public class RegistroPilotos {
         grabar+=p.getEquipo()+";";
         grabar+=p.getEquipoAnterior()+";";
         grabar+=p.getNacionalidad()+";";
-        grabar+=p.getFechaNacimiento()+";";
+        grabar+=p.getFechaNacimiento();
         
         this.escribir(grabar);
     }
@@ -216,10 +216,17 @@ public class RegistroPilotos {
         {
             fichero = new FileWriter(this.ruta+"R_Piloto.txt");
             pw = new PrintWriter(fichero);
- 
-           // for(Piloto p:this.getListaPilotos()){
-                //this.guardarPiloto(p);
-            //}
+            
+            int cont=this.getListaPilotos().size();
+            int i;
+            for(i=0;i<cont;i++){
+                Piloto p=this.getListaPilotos().get(i);
+               this.guardarPiloto(p); 
+            }
+            
+           /*for(Piloto p:this.listaPilotos){
+                this.guardarPiloto(p);
+            }*/
                 //pw.println(cadena);
  
         } catch (Exception e) {

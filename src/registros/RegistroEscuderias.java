@@ -7,10 +7,10 @@ import entidades.Escuderia;
 import entidades.Piloto;
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -241,10 +241,17 @@ public class RegistroEscuderias {
         {
             fichero = new FileWriter(this.ruta+"R_Escuderia.txt");
             pw = new PrintWriter(fichero);
- 
-            for(Escuderia e:this.getListaEscuderias()){
-                this.guardarEscuderia(e);
+            int cont=this.getListaEscuderias().size();
+            int i;
+            for(i=0;i<cont;i++){
+                Escuderia e=this.getListaEscuderias().get(i);
+               this.guardarEscuderia(e); 
             }
+            
+            
+            /*for(Escuderia e:this.getListaEscuderias()){
+                this.guardarEscuderia(e);
+            }*/
                 //pw.println(cadena);
  
         } catch (Exception e) {

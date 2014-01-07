@@ -73,10 +73,16 @@ public class RegistroCircuitos {
         {
             fichero = new FileWriter(this.ruta+"R_circuitos.txt");
             pw = new PrintWriter(fichero);
- 
-            for(Circuito cir:this.getListaCircuitos()){
-                this.guardarCircuito(cir);
+            int cont=this.getListaCircuitos().size();
+            int i;
+            for(i=0;i<cont;i++){
+                Circuito c=this.getListaCircuitos().get(i);
+               this.guardarCircuito(c); 
             }
+            
+            /*for(Circuito cir:this.getListaCircuitos()){
+                this.guardarCircuito(cir);
+            }*/
                 //pw.println(cadena);
  
         } catch (Exception e) {
