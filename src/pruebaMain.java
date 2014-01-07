@@ -86,7 +86,7 @@ public class pruebaMain {
         
         
         f1.cargarDatosEscuderias();//cargamos los datos de los ficheros
-        f1.cargarDatosPilotos();
+        //f1.cargarDatosPilotos();
         f1.cargarDatosGrandesPremios();
         f1.cargarDatosCM();
         //f1.cargarDatosCircuitos();

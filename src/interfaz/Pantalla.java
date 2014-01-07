@@ -5,10 +5,11 @@
 package interfaz;
 
 import controlador.Formula1;
+import edi.io.IO;
 import entidades.Circuito;
 import entidades.GranPremio;
 import java.util.ArrayList;
-import poo.io.IO;
+//import EntradaSalida;
 
 /**
  *
@@ -39,7 +40,8 @@ public class Pantalla {
         System.out.println("9) Ver clasificación de Escuderias en GP\n");
         System.out.println("10) Gestión Salir\n");
         System.out.println("\n_____Selecciona una opción_____\n");
-        op=(int)IO.readNumber();
+        op=(int)IO.readNumber();        
+        
         }
         while(op<1 || op>10);
         
@@ -461,14 +463,14 @@ public class Pantalla {
         //this.f1.realizarBajaEscuderia(idEscuderia);
         return idEscuderia;
     }
-<<<<<<< HEAD
+//<<<<<<< HEAD
     public String solicitarIdPiloto(String mensaje){
         String piloto;
         System.out.println(mensaje);
         piloto=IO.readLine();
         return piloto;
     }
-=======
+//=======
     public void menuCircuitos(){
         int op=0;
         Boolean salir=false;
@@ -582,6 +584,6 @@ public class Pantalla {
         idCircuito=IO.readLine();
         return idCircuito;
     }    
->>>>>>> 3b77095a1d107ea31134d76044f7d040473dec25
+//>>>>>>> 3b77095a1d107ea31134d76044f7d040473dec25
 }
 
