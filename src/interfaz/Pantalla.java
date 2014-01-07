@@ -117,7 +117,11 @@ public class Pantalla {
                 break;
             case 5:
                 System.out.println("\n*** Cambio de pilotos activos ***\n");
-                this.f1.realizarCambioPilotosActivos(this.solicitarId());
+                String idEscuderia=this.solicitarId();
+                String idPiloto1=this.solicitarIdPiloto("Introduce el id del piloto 1");
+                String idPiloto2=this.solicitarIdPiloto("Introduce el id del piloto 2");
+                
+                this.f1.realizarCambioPilotosActivos(idEscuderia,idPiloto1,idPiloto2);
                 System.out.println("El cambio es correcto\n");
                 break;
             case 6:
@@ -290,5 +294,11 @@ public class Pantalla {
         idEscuderia=IO.readLine();
         //this.f1.realizarBajaEscuderia(idEscuderia);
         return idEscuderia;
+    }
+    public String solicitarIdPiloto(String mensaje){
+        String piloto;
+        System.out.println(mensaje);
+        piloto=IO.readLine();
+        return piloto;
     }
 }

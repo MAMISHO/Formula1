@@ -116,10 +116,15 @@ public class Formula1 {
         this.registroDatosEscuderias.guardarEscuderiaModificada(escuderia);
     }
    
-    public void realizarCambioPilotosActivos(String idEscuderia){
-        //se sincronizara cuando este implementado el registro de pilotos
+    public void realizarCambioPilotosActivos(String idEscuderia, String idPiloto1, String idPiloto2){
+        //se sincronizara cuando este implementado el registro de pilotos∫
         //porque es necesario para el funcionamiento.
-        System.out.println("inicia el cambio");
+        //System.out.println("inicia el cambio");
+        escuderia=this.registroDatosEscuderias.introduceIdEscuderia(idEscuderia);
+        //List<Piloto> pilotos=this.registroDatosPilotos.obtenerPilotosCambio(idPiloto1,idPiloto2);
+                        // esta no solo para pruebas List<Piloto> pilotos= new ArrayList<Piloto>();
+        //escuderia.sustituirPilotos(pilotos.get(0),pilotos.get(1));
+        this.registroDatosEscuderias.guardarEscuderiaModificada(escuderia);
     }
     
     //circuitos
@@ -148,12 +153,12 @@ public class Formula1 {
     
     public void consultaCECM(){
         List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
-        //this.posicion.mostrarClasificacionEscuderiasCM(posiciones);
+        this.posicion.mostrarClasificacionEscuderiasCM(posiciones);
     }
     
     public void consultaCPCM(){
         List<Posicion> posiciones=registroClasificaciones.obtenerListaPosicionesCM(this.campeonatoMundial.getAnyo());
-        //this.posicion.mostrarClasificacionPilotosCM(posiciones);
+        this.posicion.mostrarClasificacionPilotosCM(posiciones);
     }
     //metodos necesarios
     

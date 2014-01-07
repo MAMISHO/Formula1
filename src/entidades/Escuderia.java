@@ -5,7 +5,6 @@
 package entidades;
 
 import java.util.List;
-import java.util.Date;
 import java.util.ArrayList;
 /**
  *
@@ -77,6 +76,16 @@ public class Escuderia {
         
         datosEscuderia="* Escuderia *\n" + "Nombre: " + esc.nombre + "\nSede: "+esc.sede + "\nChasis: "+esc.chasis+"\nMotor: "+esc.motor+"\nNeumaticos: "+esc.neumaticos+"\nPrimera Temporada: "+esc.primeraTemporada+"\nFecha de creacion: "+  esc.fechaCrea+"\n";
         return datosEscuderia;
+    }
+    
+    public void sustituirPilotos(Piloto p1, Piloto p2){
+        for(String p:this.idPilotosActivos){
+            if(p.equals(p1.getIdPiloto())){
+                //p=;
+                this.idPilotosActivos.remove(p);
+                this.idPilotosActivos.add(p2.getIdPiloto());
+            }
+        }
     }
 
     //añade código por netbeans
